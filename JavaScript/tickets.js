@@ -1,3 +1,4 @@
+//
 const costoTicket = 200;
 let nombre=document.getElementById("nombre"),apellido=document.getElementById("apellido"),
     Email=document.getElementById("mail"),cantTickets=document.getElementById("cantidadTickets"),
@@ -108,7 +109,5 @@ function quitarErrorCampos() {
     }
     return;
 }
-//
-//
 //
 //
