@@ -11,9 +11,9 @@ botonResumen.addEventListener('click', total_a_Pagar);      // Función para Cal
 function limpiarCampos() {                                  // Función para limpiar los campos, en el cual verifica que se haya llenado alguno de los mismos
     if((nombre.value != "") || (apellido.value != "") || (Email.value != "") || (cantTickets.value != 0) || (cat.value != "")) {
         if (confirm("¿ Desea Borrar los datos ingresados ?")== true){           // Pregunta al usuario si quiere borrar los datos ingresados,
-            //quitarClaseError();                                               // pero solo lo pregunta si completaron algún campo 
-            quitarErrorCampos();            
-            totalPago.innerHTML = "";                       // Así limpia el campo total a pagar
+            quitarErrorCampos();                                                // pero solo lo pregunta si es que completaron algún campo
+            totalPago.innerHTML = "";                                           // Limpia el campo total a pagar
+            //
         }else{                        
             return;
         }    
@@ -24,10 +24,10 @@ function limpiarCampos() {                                  // Función para lim
 }
 //
 //
-function total_a_Pagar() {                                  // Es la función que calcula el total del resumen de la compra     
+function total_a_Pagar() {                                                                      // Es la función que calcula el total del resumen de la compra     
     let resumenTicketsTotal=0,descStudent=80/100,descTrainee=50/100,descJunior=15/100;
     //
-    if (confirm("¿ Desea Confirmar los datos ingresados y visualizar el resumen ?")== true){        // Pregunta al usuario si efectivamente quiere realizar el pago
+    if (confirm("¿ Desea Confirmar los datos ingresados y visualizar el resumen ?")== true){    // Pregunta al usuario si efectivamente quiere realizar el pago
         if (nombre.value === ""){
             alert("Debe escribir un nombre para éste campo!");
             nombre.classList.add("is-invalid");
@@ -55,21 +55,21 @@ function total_a_Pagar() {                                  // Es la función qu
             return;            
         }
         //                
-        verificaEmail();              // Realiza una verificación adicional para constatar que sea un formato de E-Mail válido
+        verificaEmail();              // Realiza una verificación adicional para constatar que se ingrese un formato de E-Mail válido
         //  
         resumenTicketsTotal=cantTickets.value*costoTicket;
         //
-        switch (cat.value) {      // Evaluo la expresión via la estructura Switch
-            case "0":             // Sin categoría
+        switch (cat.value) {          // Evaluo la expresión via la estructura Switch
+            case "0":                 // Sin categoría
                 resumenTicketsTotal = resumenTicketsTotal;
                 break;
-            case "1":             // Student                                  
+            case "1":                 // Student                                  
                 resumenTicketsTotal = resumenTicketsTotal-(descStudent*resumenTicketsTotal);
                 break;
-            case "2":             // Trainee
+            case "2":                 // Trainee
                 resumenTicketsTotal = resumenTicketsTotal-(descTrainee*resumenTicketsTotal);
                 break;                
-            case "3":             // Junior                    
+            case "3":                 // Junior                    
                 resumenTicketsTotal = resumenTicketsTotal-(descJunior*resumenTicketsTotal);
                 break;
         }
@@ -108,5 +108,7 @@ function quitarErrorCampos() {
     }
     return;
 }
+//
+//
 //
 //
