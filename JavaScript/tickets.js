@@ -26,7 +26,7 @@ function limpiarCampos() {                                  // Función para lim
 //
 //
 function total_a_Pagar() {                                                                      // Es la función que calcula el total del resumen de la compra     
-    let resumenTicketsTotal=0,descStudent=80/100,descTrainee=50/100,descJunior=15/100;
+    let resumenTicketsTotal=0,descStudent=80/100,descTrainee=50/100,descJunior=15/100,nomCategoria="";
     //
     if (confirm("¿ Desea Confirmar los datos ingresados y visualizar el resumen ?")== true){    // Pregunta al usuario si efectivamente quiere realizar el pago
         if (nombre.value === ""){
@@ -63,19 +63,28 @@ function total_a_Pagar() {                                                      
         switch (cat.value) {          // Evaluo la expresión via la estructura Switch
             case "0":                 // Sin categoría
                 resumenTicketsTotal = resumenTicketsTotal;
+                nomCategoria="Sin Categoría";
                 break;
             case "1":                 // Student                                  
                 resumenTicketsTotal = resumenTicketsTotal-(descStudent*resumenTicketsTotal);
+                nomCategoria="Estudiante";
                 break;
             case "2":                 // Trainee
                 resumenTicketsTotal = resumenTicketsTotal-(descTrainee*resumenTicketsTotal);
+                nomCategoria="Trainee";
                 break;                
             case "3":                 // Junior                    
                 resumenTicketsTotal = resumenTicketsTotal-(descJunior*resumenTicketsTotal);
+                nomCategoria="Junior";
                 break;
         }
         totalPago.innerHTML = resumenTicketsTotal;      // Muestra en la pantalla el total del resumen de acuerdo a la selección del usuario            
         quitarErrorCampos();
+        //        
+        alert("Resumen de la Compra:\n\nNombre: "+nombre.value+"\nApellido: "+apellido.value+       // Muestra en un alert el resumen de los datos ingresados
+              "\nE-Mail: "+Email.value+"\nCantidad de Tickets: "+cantTickets.value+                 // por el usuario 
+              "\nCategoría: "+nomCategoria+"\n\nTotal a Pagar: $ "+resumenTicketsTotal);        
+        //           
         return;
         //               
     }else{                                              // No confirma los datos ingresados, hace un return por si el usuario
